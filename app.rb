@@ -12,21 +12,24 @@ set :port, 4567
 # 秋の結果データ
 AUTUMN_RESULTS = [
   { image: 'momiji.png', text: 'もみじを見つけた！' },
-  { image: 'acorn.png', text: 'どんぐりを見つけた！' },
-  { image: 'persimmon.png', text: '柿を見つけた！' },
-  { image: 'cosmos.png', text: 'コスモスを見つけた！' },
-  { image: 'chestnut.png', text: '栗を見つけた！' }
+  { image: 'sakura.png', text: '残念・・・季節外れ・桜を見つけた！' },
+  { image: 'icho.png', text: 'イチョウを見つけた！' },
+  { image: 'higanbana.png', text: '彼岸花を見つけた！' },
+  { image: 'kuri.png', text: '栗を見つけた！' }
 ]
 
 get '/' do
-  "Hello, Small Autumn Gacha! アプリが起動しました🍂"
+  erb :index
 end
 
 get '/loading' do
-  "Loading page - 秋を探しています..."
+  erb :loading
 end
 
 get '/result' do
-  result = AUTUMN_RESULTS.sample
-  "結果: #{result[:text]}"
+  @selected_item = weighted_random_select(AUTUMN_ITEMS)
+  erb :result
 end
+
+private
+
