@@ -6,5 +6,5 @@ gem 'puma'            # Webサーバー
 gem 'rackup'          # Rackアプリケーション起動用
 
 group :development do
-  gem 'rerun'
+  gem 'sinatra-reloader'
 end

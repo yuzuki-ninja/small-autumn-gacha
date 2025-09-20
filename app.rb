@@ -1,13 +1,24 @@
 require 'sinatra'
-require 'sinatra/reloader' if development?
+
+if development?
+  require 'sinatra/reloader'
+end
 
 # 静的ファイルの設定
 set :public_folder, 'public'
 set :views, 'views'
 
-# すべてのIPからのアクセスを許可（Docker環境で必要）
-set :bind, '0.0.0.0'
-set :port, 4567
+# 開発環境での設定（Docker用）
+configure :development do
+  set :bind, '0.0.0.0'  # Dockerコンテナからアクセス可能にする
+  set :port, 4567
+end
+
+# 本番環境での設定
+configure :production do
+  set :port, ENV['PORT'] || 4567
+  set :bind, '0.0.0.0'  # Renderなどのクラウドサービスで必要
+end
 
 # 秋の結果データ
 AUTUMN_ITEMS = [
