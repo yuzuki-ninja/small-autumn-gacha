@@ -1,8 +1,31 @@
 <div class="container">
-  <div class="gacha-container">
-    <h2>🍁 ガチャ結果 🍁</h2>
-    <button class="gacha-button" onclick="location.href='/loading'">
-      もう一度探す
-    </button>
+  <div class="result-container">
+    <h2>🎉 ガチャ結果 🎉</h2>
+    
+    <!-- レア演出 -->
+    <% if @selected_item[:rarity] == 'rare' %>
+      <div class="rare-effect">
+        <p class="rare-text">✨ レア！ ✨</p>
+      </div>
+    <% end %>
+    
+    <!-- 結果表示 -->
+    <div class="result-image">
+      <img src="/images/<%= @selected_item[:image] %>" alt="<%= @selected_item[:text] %>">
+    </div>
+    
+    <div class="result-text">
+      <h3><%= @selected_item[:text] %></h3>
+      <p class="rarity-badge <%= @selected_item[:rarity] %>">
+        <%= @selected_item[:rarity] == 'rare' ? 'レア' : 'ノーマル' %>
+      </p>
+    </div>
+    
+    <!-- もう一度ボタン -->
+    <div class="action-buttons">
+      <button class="gacha-button" onclick="location.href='/'">
+        もう一度ガチャを回す
+      </button>
+    </div>
   </div>
 </div>

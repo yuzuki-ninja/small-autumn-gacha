@@ -88,3 +88,71 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
 }
+
+/* ローディング画面 */
+.loading-container {
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  padding: 48px 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 32px 0;
+}
+
+.loading-container h2 {
+  font-size: 32px;
+  color: #d97706;
+  margin-bottom: 32px;
+}
+
+.loading-container p {
+  font-size: 18px;
+  color: #6b7280;
+  margin-top: 24px;
+}
+
+/* ローディングスピナー */
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #f59e0b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 秋の葉っぱが舞い落ちるアニメーション */
+.loading-container::before {
+  content: '🍁';
+  position: absolute;
+  top: 20px;
+  left: 20%;
+  font-size: 24px;
+  animation: fall 3s linear infinite;
+}
+
+.loading-container::after {
+  content: '🍂';
+  position: absolute;
+  top: 20px;
+  right: 20%;
+  font-size: 24px;
+  animation: fall 3s linear infinite 1.5s;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300px) rotate(360deg);
+    opacity: 0;
+  }
+}
