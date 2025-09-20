@@ -11,13 +11,13 @@ set :port, 4567
 
 # 秋の結果データ
 AUTUMN_ITEMS = [
-  { image: 'momiji.png', text: 'もみじを見つけた！', rarity: 'normal', weight: 5 },
-  { image: 'icho.png', text: 'イチョウを見つけた！', rarity: 'normal', weight: 5 },
-  { image: 'higanbana.png', text: '彼岸花を見つけた！', rarity: 'normal', weight: 10 },
-  { image: 'kuri.png', text: '栗を見つけた！', rarity: 'normal', weight: 10 },
-  { image: 'yakiimo.png', text: '焼き芋を見つけた！', rarity: 'normal', weight: 10 },
-  { image: 'halloween_pumpkin.png', text: 'かぼちゃのランタンを見つけた！', rarity: 'normal', weight: 10 },
-  { image: 'sakura.png', text: '残念！季節外れ・桜を見つけた！', rarity: 'rare', weight: 50 },
+  { image: 'momiji.png', text: '✨もみじを見つけた✨', weight: 20 },
+  { image: 'icho.png', text: '✨イチョウを見つけた✨', weight: 20 },
+  { image: 'higanbana.png', text: '✨彼岸花を見つけた✨', weight: 15 },
+  { image: 'kuri.png', text: '✨栗を見つけた✨', weight: 15 },
+  { image: 'yakiimo.png', text: '✨焼き芋を見つけた✨', weight: 15 },
+  { image: 'halloween_pumpkin.png', text: '🎃かぼちゃのランタンを見つけた🎃', weight: 10 },
+  { image: 'sakura.png', text: '😮季節外れ！桜を見つけた😮', weight: 5 },
 ]
 
 get '/' do

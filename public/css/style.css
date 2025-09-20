@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: rgb(72, 72, 72);
   line-height: 1.6;
   background: linear-gradient(to bottom, #fefce8, #fed7aa);
   min-height: 100vh;
@@ -30,7 +31,7 @@ header h1 {
 /* メインコンテンツ */
 main {
   min-height: calc(100vh - 140px);
-  padding: 32px 16px;
+  padding: 32px 10px;
 }
 
 /* フッター */
@@ -60,15 +61,23 @@ footer {
 }
 
 .gacha-container h2 {
-  font-size: 32px;
+  font-size: 28px;
   color: #d97706;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
-.gacha-container p {
-  font-size: 18px;
-  color: #6b7280;
-  margin-bottom: 32px;
+.gacha-container h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.gacha-container img {
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  margin: 10px 10px;
+  object-fit: contain;
 }
 
 /* ガチャボタン */
@@ -97,6 +106,7 @@ footer {
   padding: 48px 32px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   margin: 32px 0;
+  overflow: hidden;
 }
 
 .loading-container h2 {
@@ -111,29 +121,42 @@ footer {
   margin-top: 24px;
 }
 
-/* ローディングスピナー */
-.loading-spinner {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 24px;
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #f59e0b;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+/* 虫眼鏡アニメーション */
+.loading-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px auto;
+  animation: bounce 0.6s ease-in-out infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.loading-image img {
+  /* 画像サイズをレスポンシブに */
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
 }
 
-/* 秋の葉っぱが舞い落ちるアニメーション */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 葉っぱアニメーション */
 .loading-container::before {
   content: '🍁';
   position: absolute;
   top: 20px;
   left: 20%;
-  font-size: 24px;
+  font-size: 30px;
   animation: fall 3s linear infinite;
 }
 
@@ -142,7 +165,7 @@ footer {
   position: absolute;
   top: 20px;
   right: 20%;
-  font-size: 24px;
+  font-size: 30px;
   animation: fall 3s linear infinite 1.5s;
 }
 
@@ -154,5 +177,150 @@ footer {
   100% {
     transform: translateY(300px) rotate(360deg);
     opacity: 0;
+  }
+}
+
+/* ===========================================
+    スマートフォン対応（全画面共通）
+   =========================================== */
+@media (max-width: 768px) {
+  
+  /* コンテナ全般のスマホ対応 */
+  .container {
+    padding: 16px 8px;
+    margin: 16px auto;
+  }
+  
+  /* 各画面のコンテナ共通調整 */
+  .gacha-container,
+  .loading-container,
+  .result-container {
+    padding: 32px 16px;
+    margin: 16px 8px;
+    border-radius: 15px;
+  }
+  
+  /* ========== インデックス画面 ========== */
+  .gacha-container h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  
+  .gacha-container p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .gacha-container img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 8px;
+  }
+  
+  .gacha-button {
+    font-size: 18px;
+    padding: 16px 32px;
+    margin-top: 24px;
+  }
+  
+  /* ========== ローディング画面 ========== */
+  .loading-container h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .loading-container p {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+  
+  .loading-image img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  /* ========== 結果画面 ========== */
+  .result-container h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .result-container h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  
+  .result-image img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  .gacha-button {
+    font-size: 16px;
+    padding: 14px 28px;
+  }
+  
+  /* アニメーション調整 */
+  @keyframes fall {
+    0% {
+      transform: translateY(-20px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(200px) rotate(360deg); /* スマホでは短く */
+      opacity: 0;
+    }
+  }
+}
+
+/* ===========================================
+    さらに小さい画面（iPhone SE等）
+   =========================================== */
+@media (max-width: 480px) {
+  
+  .container {
+    padding: 12px 4px;
+  }
+  
+  .gacha-container,
+  .loading-container,
+  .result-container {
+    padding: 24px 12px;
+    margin: 12px 4px;
+  }
+  
+  /* インデックス画面 */
+  .gacha-container h1 {
+    font-size: 24px;
+  }
+  
+  .gacha-container img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  /* ローディング画面 */
+  .loading-container h2 {
+    font-size: 20px;
+  }
+  
+  .loading-image img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+  
+  /* 結果画面 */
+  .result-container h2 {
+    font-size: 20px;
+  }
+  
+  .result-image img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+  
+  .gacha-button {
+    font-size: 14px;
+    padding: 12px 24px;
   }
 }
